@@ -8,9 +8,18 @@ import com.asdeire.mailreview.entity.MailReview;
 import java.io.*;
 import java.util.*;
 
+/**
+ * Handles file operations for storing and retrieving mail reviews.
+ */
 public class FileHandler {
     private static final ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
+    /**
+     * Writes a list of mail reviews to a JSON file.
+     *
+     * @param fileName The name of the file to write to.
+     * @param dataList The list of mail reviews to write.
+     */
     public static void writeToFile(String fileName, List<MailReview> dataList) {
         try {
             objectMapper.writeValue(new File(fileName), dataList);
@@ -19,6 +28,12 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Reads a list of mail reviews from a JSON file.
+     *
+     * @param fileName The name of the file to read from.
+     * @return The list of mail reviews read from the file.
+     */
     public static List<MailReview> readFromFile(String fileName) {
         try {
             File file = new File(fileName);
@@ -32,7 +47,5 @@ public class FileHandler {
         return null;
     }
 }
-
-
 
 
